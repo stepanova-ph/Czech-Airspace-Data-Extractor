@@ -61,7 +61,6 @@ def extract_AMA_space(preprocessed_content: Optional[str]) -> List[Dict[str, str
             continue
         
         space_info: Dict[str, str] = {
-            'serial': cells[0].text.strip(),
             'space': cells[1].text.strip(),
             'lower_bound': cells[2].text.strip(),
             'upper_bound': cells[3].text.strip(),
