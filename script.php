@@ -62,7 +62,7 @@ function preprocess_content($content) {
 
 function extract_AMA_space($preprocessed_content) {
     if (!$preprocessed_content) {
-        return [];
+        return array();
     }
     
     $dom = new DOMDocument();
@@ -70,7 +70,7 @@ function extract_AMA_space($preprocessed_content) {
     $xpath = new DOMXPath($dom);
     
     $dataRows = $xpath->query("//tr[td[@class='data']]");
-    $ama_spaces = [];
+    $ama_spaces = array();
     
     foreach ($dataRows as $row) {
         $cells = $xpath->query(".//td[@class='data']", $row);
@@ -79,13 +79,13 @@ function extract_AMA_space($preprocessed_content) {
             continue;
         }
         
-        $space_info = [
+        $space_info = array(
             'space' => trim($cells->item(1)->textContent),
             'lower_bound' => trim($cells->item(2)->textContent),
             'upper_bound' => trim($cells->item(3)->textContent),
             'from_time' => trim($cells->item(4)->textContent),
             'to_time' => trim($cells->item(5)->textContent),
-        ];
+	);
         
         $ama_spaces[] = $space_info;
     }
@@ -100,7 +100,7 @@ function fetch_spaces_for_date($date) {
     $content = fetch_content($url);
     if (!$content) {
         print_warning("No content retrieved for " . $date->format('Y-m-d'));
-        return [];
+        return array();
     }
     
     $ama_section = preprocess_content($content);
@@ -142,7 +142,8 @@ function create_csv($filename, $spaces) {
 
 function main() {
     $today = new DateTime();
-    $tomorrow = (new DateTime())->modify('+1 day');
+    $tomorrow = new DateTime();
+    $tomorrow->modify('+1 day');
     
     $output_dir = "ama_data";
     if (!file_exists($output_dir)) {
