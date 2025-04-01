@@ -3,10 +3,6 @@ from bs4 import BeautifulSoup
 from utils import print_warning
 
 def extract_ama_spaces(preprocessed_content):
-    """
-    Extract AMA spaces from the preprocessed UUP content
-    Similar to AUP extraction but specific to UUP format
-    """
     if not preprocessed_content:
         return []
     
