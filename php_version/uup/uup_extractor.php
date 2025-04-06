@@ -48,7 +48,6 @@ function get_uup_urls_from_aup_page() {
         }
         
         print_info("Found " . count($uup_links) . " UUP links");
-        echo "<pre>UUP Links found: " . count($uup_links) . "</pre>";
         
         return $uup_links;
     
@@ -135,8 +134,6 @@ function preprocess_uup_content($content) {
 
 function process_uup_data() {
     print_info("Starting UUP data processing");
-    
-    ensure_directory(OUTPUT_DIR_UUP);
     
     $uup_links = get_uup_urls_from_aup_page();
     
