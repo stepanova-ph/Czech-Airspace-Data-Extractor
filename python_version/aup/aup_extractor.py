@@ -91,13 +91,13 @@ def process_aup_data():
     
     ama_today = fetch_aup_spaces_for_date(today)
     if ama_today:
-        today_filename = os.path.join(OUTPUT_DIR_AUP, f"aup_{today.strftime('%d%m%Y')}.aup")
+        today_filename = os.path.join(OUTPUT_DIR_AUP, f"aup_{today.strftime('%d%m%Y')}.csv")
         create_aup_file(today_filename, ama_today)
     
     try:
         ama_tomorrow = fetch_aup_spaces_for_date(tomorrow)
         if ama_tomorrow:
-            tomorrow_filename = os.path.join(OUTPUT_DIR_AUP, f"aup_{tomorrow.strftime('%d%m%Y')}.aup")
+            tomorrow_filename = os.path.join(OUTPUT_DIR_AUP, f"aup_{tomorrow.strftime('%d%m%Y')}.csv")
             create_aup_file(tomorrow_filename, ama_tomorrow)
     except Exception as e:
         print_warning(f"Error processing tomorrow's data: {str(e)}")

@@ -129,14 +129,14 @@ function process_aup_data() {
     
     $ama_today = fetch_aup_spaces_for_date($today);
     if ($ama_today) {
-        $today_filename = OUTPUT_DIR_AUP . "/aup_" . $today->format('dmY') . ".aup";
+        $today_filename = OUTPUT_DIR_AUP . "/aup_" . $today->format('dmY') . ".csv";
         create_aup_file($today_filename, $ama_today);
     }
     
     try {
         $ama_tomorrow = fetch_aup_spaces_for_date($tomorrow);
         if ($ama_tomorrow) {
-            $tomorrow_filename = OUTPUT_DIR_AUP . "/aup_" . $tomorrow->format('dmY') . ".aup";
+            $tomorrow_filename = OUTPUT_DIR_AUP . "/aup_" . $tomorrow->format('dmY') . ".csv";
             create_aup_file($tomorrow_filename, $ama_tomorrow);
         }
     } catch (Exception $e) {
