@@ -208,7 +208,7 @@ def process_uup_from_html_file(html_file_path):
         
         print_info(f"Found {len(ama_spaces)} AMA spaces in test UUP file")
         
-        filename = os.path.join(OUTPUT_DIR_UUP, f"uup_{date_str}_test.uup")
+        filename = os.path.join(OUTPUT_DIR_UUP, f"uup_{date_str}_test.csv")
         
         save_uup_data(filename, ama_spaces)
         

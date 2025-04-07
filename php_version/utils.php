@@ -28,12 +28,12 @@ function ensure_directory($directory) {
 
 function fetch_content($url) {
     try {
-        $context = stream_context_create([
-            'http' => [
+        $context = stream_context_create(array(
+            'http' => array(
                 'ignore_errors' => true,
                 'timeout' => 30
-            ]
-        ]);
+            )
+        ));
         
         $response = @file_get_contents($url, false, $context);
         
